@@ -3,9 +3,10 @@
 
 $field-width: 500px;
 $grid-spacing: 15px;
-$grid-row-cells: 4;
+$grid-row-cells: 5;
 $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
 $tile-border-radius: 3px;
+$tile-font-size: 55px * 4 / $grid-row-cells;
 
 $mobile-threshold: $field-width + 20px;
 
@@ -221,9 +222,9 @@ hr {
         margin-left: 9px;
         // margin-top: 59px;
 
-	&.keep-playing-button {
-	  display: none;
-	}
+  &.keep-playing-button {
+    display: none;
+  }
       }
 
       @include animation(fade-in 800ms ease $transition-speed * 12);
@@ -233,9 +234,9 @@ hr {
         background: rgba($tile-gold-color, .5);
         color: $bright-text-color;
 
-	a.keep-playing-button {
-	  display: inline-block;
-	}
+  a.keep-playing-button {
+    display: inline-block;
+  }
       }
 
       &.game-won, &.game-over {
@@ -317,7 +318,7 @@ hr {
     font-weight: bold;
     z-index: 10;
 
-    font-size: 55px;
+    font-size: $tile-font-size;
   }
 
   // Movement transition
