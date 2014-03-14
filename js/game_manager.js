@@ -1,11 +1,12 @@
-function GameManager(size, targetTile, InputManager, Actuator, ScoreManager) {
+function GameManager(size, targetTile, tilesToAdd, InputManager, Actuator, ScoreManager) {
   this.size         = size; // Size of the grid
   this.inputManager = new InputManager;
   this.scoreManager = new ScoreManager;
   this.actuator     = new Actuator;
 
-  this.startTiles   = 2;
+  this.startTiles   = tilesToAdd;
   this.targetTile = targetTile;
+  this.tilesToAdd = tilesToAdd;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
@@ -64,6 +65,9 @@ GameManager.prototype.addRandomTile = function () {
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
     this.grid.insertTile(tile);
+    return true;
+  } else {
+    return false;
   }
 };
 
@@ -139,7 +143,7 @@ GameManager.prototype.move = function (direction) {
 
           // Update the score
           self.score += merged.value;
-          
+
           // The mighty targetTile tile
           if (merged.value === self.targetTile) self.won = true;
         } else {
@@ -154,7 +158,12 @@ GameManager.prototype.move = function (direction) {
   });
 
   if (moved) {
-    this.addRandomTile();
+    for (var i = 0; i < this.tilesToAdd; ++i) {
+      if (!this.addRandomTile()) {
+        break;
+      }
+    }
+    
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
