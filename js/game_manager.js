@@ -1,10 +1,11 @@
-function GameManager(size, InputManager, Actuator, ScoreManager) {
+function GameManager(size, targetTile, InputManager, Actuator, ScoreManager) {
   this.size         = size; // Size of the grid
   this.inputManager = new InputManager;
   this.scoreManager = new ScoreManager;
   this.actuator     = new Actuator;
 
   this.startTiles   = 2;
+  this.targetTile = targetTile;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
@@ -138,9 +139,9 @@ GameManager.prototype.move = function (direction) {
 
           // Update the score
           self.score += merged.value;
-
-          // The mighty 2048 tile
-          if (merged.value === 2048) self.won = true;
+          
+          // The mighty targetTile tile
+          if (merged.value === self.targetTile) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
         }
