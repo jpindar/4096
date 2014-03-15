@@ -6,9 +6,8 @@ $grid-spacing: 15px;
 $grid-row-cells: 5;
 $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
 $tile-border-radius: 3px;
-$tile-font-size: 55px * 4 / $grid-row-cells;
 
-$mobile-threshold: $field-width + 20px;
+$mobile-threshold: $field-width + 5px;
 
 $text-color: #776E65;
 $bright-text-color: #f9f6f2;
@@ -318,7 +317,7 @@ hr {
     font-weight: bold;
     z-index: 10;
 
-    font-size: $tile-font-size;
+    font-size: 55px;
   }
 
   // Movement transition
@@ -459,7 +458,6 @@ hr {
   // Redefine variables for smaller screens
   $field-width: 280px;
   $grid-spacing: 10px;
-  $grid-row-cells: 4;
   $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
   $tile-border-radius: 3px;
 
