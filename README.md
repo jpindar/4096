@@ -6,7 +6,7 @@
  * the grid is *5x5*
  * *2 tiles* are added each round instead of 1
 
-[Play it here!](http://mattjmattj.github.io/4096/)
+[Play it here!](http://jpindar.github.io/4096/)
 
 ## License
-2048 and 4096 are licensed under the [MIT license.](https://github.com/mattjmattj/4096/blob/master/LICENSE.txt)
+2048 and 4096 are licensed under the [MIT license.](https://github.com/jpindar/4096/blob/master/LICENSE.txt)
